@@ -1,0 +1,45 @@
+.todo-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+.todo-list {
+    width: 400px;
+}
+
+h1 {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: italic;
+    font-variation-settings: "wdth" 100;
+    font-size: 50px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+li {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 25px;
+    width: 900px;
+}
+
+.remove-button {
+    margin-left: 5px;
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(240, 248, 255, 0);
+    font-size: 15px;
+    color: rgb(138, 138, 138);
+    transition: transform .2s;
+}
+
+.remove-button:hover {
+    transform: scale(1.5);
+    color: rgb(145, 49, 49);
+}
