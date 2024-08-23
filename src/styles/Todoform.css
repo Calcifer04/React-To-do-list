@@ -77,9 +77,31 @@ h5{
     width: 150px;
 }
 
+::-webkit-calendar-picker-indicator {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+    transform: scale(1.2);
+}
+
+::-webkit-datetime-edit-year-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field {
+    transition: transform 0.2s;
+}
+
+::-webkit-datetime-edit-year-field:hover,
+::-webkit-datetime-edit-month-field:hover,
+::-webkit-datetime-edit-day-field:hover {
+    color: #636363;
+}
+
 .color-selector {
     display: flex;
-    gap: 35px;
+    gap: 50px;
     margin-bottom : 20px;
     margin-top: 7px;
 }

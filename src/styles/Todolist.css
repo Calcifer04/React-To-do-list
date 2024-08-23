@@ -44,7 +44,7 @@ li.todo-item {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid #333; /* Optional: adds a border to the color circle */
+    border: 1px solid #333; /* Optional: adds a border to the color circle */
 }
 
 .todo-date {
@@ -69,4 +69,14 @@ li.todo-item {
 .remove-button:hover {
     transform: scale(1.5);
     color: rgb(145, 49, 49);
+}
+
+.traffic-light {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: auto; /* Adjust size as needed */
+    height: 500px;
+    margin-right: 20px; /* Optional: adds some margin from the edge */
+    z-index: 1000; /* Ensures it stays above other content */
 }

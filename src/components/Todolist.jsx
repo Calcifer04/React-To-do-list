@@ -47,6 +47,7 @@ const Todolist = () => {
                     ))}
                 </ul>
             </div>
+            <img src="src\assets\trafficlight.png" alt="Traffic Light" className="traffic-light" />
         </div>
     );
 };
