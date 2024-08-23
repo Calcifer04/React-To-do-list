@@ -1,12 +1,13 @@
 .todo-container {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 60px;
     padding: 20px;
 }
 
 .todo-list {
     width: 400px;
+    margin-top: 10px;
 }
 
 h1 {
@@ -17,10 +18,19 @@ h1 {
     font-variation-settings: "wdth" 100;
     font-size: 50px;
     margin-top: 5px;
-    margin-left: 20px;
 }
 
-li {
+ul {
+    padding-left: 0;
+}
+
+li.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    list-style-type: none;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -30,8 +40,25 @@ li {
     width: 900px;
 }
 
+.color-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #333; /* Optional: adds a border to the color circle */
+}
+
+.todo-date {
+    font-size: 0.9em;
+    color: #555;
+    min-width: 100px; /* Ensures the date has consistent spacing */
+}
+
+.todo-text {
+    flex-grow: 1;
+}
+
 .remove-button {
-    margin-left: 5px;
+    margin: 5px;
     background-color: rgba(240, 248, 255, 0);
     border-color: rgba(240, 248, 255, 0);
     font-size: 15px;

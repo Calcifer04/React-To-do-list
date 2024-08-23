@@ -8,6 +8,7 @@
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 300px;
 }
 
 .add-button {
@@ -32,15 +33,17 @@ h2 {
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
+    font-size: 2em;
 }
 
 h3 {
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 350;
+    font-weight: 400;
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
+    font-size: 1.2em;
 }
 
 h5{
@@ -51,7 +54,7 @@ h5{
     font-variation-settings:
     "wdth" 100;
     position: absolute;
-    margin-left: 145px;
+    margin-left: 153px;
     margin-top: 60px;
 }
 
@@ -69,6 +72,27 @@ h5{
     "wdth" 100;
     font-size: 18px;
     background-color: #24242400;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc00;
     border-radius: 4px;
+    width: 150px;
+}
+
+.color-selector {
+    display: flex;
+    gap: 35px;
+    margin-bottom : 20px;
+    margin-top: 7px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 2px solid transparent;
+    transition: box-shadow 0.2s;
+}
+
+.color-box.selected {
+    box-shadow: rgba(0, 0, 255, 0) 0px 0px 0px 2px inset, rgb(31, 193, 27) 3px -3px, rgb(255, 217, 19) 6px -6px, rgb(255, 156, 85) 9px -9px, rgb(255, 85, 85) 12px -12px;
 }

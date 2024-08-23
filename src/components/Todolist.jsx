@@ -11,7 +11,6 @@ const Todolist = () => {
     });
 
     useEffect(() => {
-        console.log(JSON.stringify(localStorage.getItem(LOCAL_STORAGE_KEY)))
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
     }, [todos]);
 
@@ -34,8 +33,15 @@ const Todolist = () => {
                 <h1>To-Do List:</h1>
                 <ul>
                     {todos.map((todo, index) => (
-                        <li key={index}>
-                            {todo}
+                        <li key={index} className="todo-item">
+                            {todo.color && (
+                                <span
+                                    className="color-indicator"
+                                    style={{ backgroundColor: todo.color }}
+                                ></span>
+                            )}
+                            <span className="todo-text">{todo.text}</span>
+                            {todo.dueDate && <span className="todo-date">{todo.dueDate}</span>}
                             <button className="remove-button" onClick={() => removeTodo(index)}>✖</button>
                         </li>
                     ))}
