@@ -37,7 +37,7 @@ li.todo-item {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 25px;
-    width: 900px;
+    width: calc(900px - 50%);
 }
 
 .color-indicator {
