@@ -33,21 +33,10 @@ li.todo-item {
     list-style-type: none;
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
-    font-size: 2em;
-    width: 1000px;
-}
-
-.todo-content {
-    display: flex;
-    flex-direction: column; /* Ensures title and description are stacked */
-    flex-grow: 1; /* Takes up available space */
-}
-
-.todo-description {
-    margin-top: 10px; /* Adds some space between title and description */
-    font-size: 0.9em; /* Smaller font for description */
-    color: #666;
-    white-space: pre-wrap;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 25px;
+    width: 900px;
 }
 
 .color-indicator {
