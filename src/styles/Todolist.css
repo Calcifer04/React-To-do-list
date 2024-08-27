@@ -26,18 +26,28 @@ ul {
 
 li.todo-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Adjust alignment for flex items */
     gap: 15px;
     padding: 10px;
     border-bottom: 1px solid #ccc;
     list-style-type: none;
     font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 300;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-    font-size: 25px;
-    width: 900px;
+    font-size: 2em;
+    width: 1000px;
+}
+
+.todo-content {
+    display: flex;
+    flex-direction: column; /* Ensures title and description are stacked */
+    flex-grow: 1; /* Takes up available space */
+}
+
+.todo-description {
+    margin-top: 10px; /* Adds some space between title and description */
+    font-size: 0.9em; /* Smaller font for description */
+    color: #666;
+    white-space: pre-wrap;
 }
 
 .color-indicator {
@@ -80,3 +90,4 @@ li.todo-item {
     margin-right: 20px; /* Optional: adds some margin from the edge */
     z-index: 1000; /* Ensures it stays above other content */
 }
+

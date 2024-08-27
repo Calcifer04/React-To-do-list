@@ -3,25 +3,30 @@ import '../styles/Todoform.css';
 
 const Todoform = ({ addTodo }) => {
     const [todo, setTodo] = useState('');
+    const [description, setDescription] = useState('');
     const [selectedColor, setSelectedColor] = useState(null);
+
 
     const handleInputChange = (e) => {
         setTodo(e.target.value);
+    };
+
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const dueDate = document.getElementById('duedate').value; // Get the selected date
         if (todo.trim()) {
-            addTodo({ text: todo, color: selectedColor, dueDate }); // Pass text, color, and date
+            addTodo({ text: todo, description, color: selectedColor, dueDate }); // Pass text, description, color, and date
             setTodo('');
+            setDescription('');
         }
     };
 
     const colors = {
         'light-green': 'rgb(44, 186, 0)',
-        'green': 'rgb(163, 255, 0)',
-        'yellow': 'rgb(255, 244, 0)',
         'orange': 'rgb(255, 167, 0)',
         'red': 'rgb(255, 0, 0)'
     };
@@ -37,9 +42,16 @@ const Todoform = ({ addTodo }) => {
                 placeholder="Add a new to-do" 
                 className="todo-input"
             />
-            <h3>Select Due Date:</h3><h5>(optional)</h5>
+            <textarea
+                type="text"
+                value={description}
+                onChange={handleDescriptionChange}
+                placeholder="Description/notes"
+                className='description-input'>
+            </textarea>
+            <h3>Select Due Date:</h3>
             <input className='date-picker' type="date" id="duedate" name="duedate"></input>
-            <h3>Select Urgency:</h3>
+            <h3>Select:</h3>
             <div className="color-selector">
                 {Object.keys(colors).map((colorKey) => (
                     <div 
