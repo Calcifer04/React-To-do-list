@@ -9,11 +9,7 @@ const LOCAL_STORAGE_KEY = 'todos';
 const Todolist = () => {
     const navigate = useNavigate();
 
-    const [todos, setTodos] = useState(() => {
-        const savedTodos = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return savedTodos ? JSON.parse(savedTodos) : [];
-    });
-
+    const [todos, setTodos] = useState([]);
     const [expandedIndex, setExpandedIndex] = useState(null);
     const [editIndex, setEditIndex] = useState(null);
     const [editText, setEditText] = useState('');
@@ -27,10 +23,14 @@ const Todolist = () => {
     ];
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-    }, [todos]);
+        const local_todos = localStorage.getItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+        if (local_todos) {
+            setTodos(JSON.parse(local_todos))
+        }
+    }, []);
 
     const addTodo = (newTodo) => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...todos, newTodo]));
         setTodos([...todos, newTodo]);
     };
 
@@ -88,7 +88,7 @@ const Todolist = () => {
             <div className="todo-list">
                 <h1>To-Do List:</h1>
                 <ul>
-                    {todos?.map((todo, index) => (
+                    {todos.map((todo, index) => (
                         <li 
                             key={index} 
                             className="todo-item"
