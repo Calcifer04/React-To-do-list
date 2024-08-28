@@ -6,7 +6,7 @@
 }
 
 .todo-list {
-    width: 400px;
+    width: 50vw;
     margin-top: 10px;
 }
 
@@ -26,7 +26,7 @@ ul {
 
 li.todo-item {
     display: flex;
-    align-items: flex-start; /* Adjust alignment for flex items */
+    align-items: flex-start;
     gap: 15px;
     padding: 10px;
     border-bottom: 1px solid #ccc;
@@ -36,28 +36,44 @@ li.todo-item {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 25px;
-    width: 900px;
+    width: 50vw;
+    position: relative;
+}
+
+p.todo-description {
+    margin: 15px 0px 10px 0px;
+    color:rgb(161, 161, 161);
+    white-space: pre-wrap;
+    font-size: 0.7em;
+}
+
+.todo-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-left: auto;
 }
 
 .color-indicator {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    border: 1px solid #333; /* Optional: adds a border to the color circle */
+    border: 1px solid #333;
 }
 
 .todo-date {
     font-size: 0.9em;
     color: #555;
-    min-width: 100px; /* Ensures the date has consistent spacing */
+    min-width: 100px;
+    margin-top: 4px;
 }
 
 .todo-text {
     flex-grow: 1;
 }
 
-.remove-button {
-    margin: 5px;
+.remove-button, .complete-button, .edit-button {
+    margin-left: 5px;
     background-color: rgba(240, 248, 255, 0);
     border-color: rgba(240, 248, 255, 0);
     font-size: 15px;
@@ -67,16 +83,110 @@ li.todo-item {
 
 .remove-button:hover {
     transform: scale(1.5);
-    color: rgb(145, 49, 49);
+    color: rgb(184, 32, 32);
+}
+
+
+.complete-button:hover {
+    transform: scale(1.5);
+    color: rgb(31, 168, 19);
+}
+
+.edit-button:hover {
+    transform: scale(1.5);
+    color: rgb(223, 161, 47)
+}
+
+.edit-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    justify-content: space-between;
+}
+
+.edit-title {
+    padding: 0.5em;
+    font-size: 0.8em;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    width: auto;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+    background-color: rgb(18, 18, 18);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.edit-date {
+    height: 40px;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+    font-size: 1.2rem;
+    background-color: #24242400;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    width: 9rem;
+    margin-top: 6px;
+}
+
+.save-button , .cancel-button {
+    margin-top: 13px;
+    font-size: 0.7em;
+    color: #ffffff;
+    background-color: #242424;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width:auto;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-left: 10px;
+    transition: transform .2s;
+}
+
+.save-button:hover {
+    transform: scale(1.1);
+}
+
+.cancel-button:hover {
+    transform: scale(1.1);
+}
+
+
+.logbook {
+    position: fixed;
+    right: 0;
+    font-size: 30px;
+    background-color: #33333300;
+    border-color: #33333300;
+    padding: 10px;
+    transition: transform .2s;
+}
+
+.logbook:hover {
+    transform: scale(1.1);
+    color: #ccc;
 }
 
 .traffic-light {
     position: fixed;
     bottom: 0;
     right: 0;
-    width: auto; /* Adjust size as needed */
+    width: auto; 
     height: 500px;
-    margin-right: 20px; /* Optional: adds some margin from the edge */
-    z-index: 1000; /* Ensures it stays above other content */
+    margin-right: 20px;
+    z-index: 1000; 
 }
 

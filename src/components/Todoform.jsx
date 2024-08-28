@@ -6,7 +6,6 @@ const Todoform = ({ addTodo }) => {
     const [description, setDescription] = useState('');
     const [selectedColor, setSelectedColor] = useState(null);
 
-
     const handleInputChange = (e) => {
         setTodo(e.target.value);
     };

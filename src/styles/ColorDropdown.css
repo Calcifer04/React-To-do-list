@@ -1,0 +1,49 @@
+.color-dropdown {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: 15px;
+}
+
+.color-dropdown-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    margin-top: 10px;
+}
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.color-dropdown-menu {
+    margin-top: 25px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(19, 19, 19);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.color-dropdown-menu .color-circle {
+    cursor: pointer;
+    margin: 2px;
+}
+
+.color-dropdown-menu .color-circle.selected {
+    border: 2px solid #ffffff;;
+}
