@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Todoform from './Todoform';
 import ColorDropdown from './ColorDropdown';
 
-const LOCAL_STORAGE_KEY = 'todos';
+const TODO_STORAGE_KEY = 'todos';
+const COMPLETED_STORAGE_KEY = 'completed_todos';
 
 const Todolist = () => {
     const navigate = useNavigate();
@@ -23,15 +24,20 @@ const Todolist = () => {
     ];
 
     useEffect(() => {
-        const local_todos = localStorage.getItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+        const local_todos = localStorage.getItem(TODO_STORAGE_KEY);
         if (local_todos) {
             setTodos(JSON.parse(local_todos))
         }
     }, []);
 
+    const updateLocalStorage = (todos, key) => {
+        localStorage.setItem(key, JSON.stringify(todos));
+    };
+
     const addTodo = (newTodo) => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...todos, newTodo]));
-        setTodos([...todos, newTodo]);
+        const updatedTodos = [...todos, newTodo];
+        setTodos(updatedTodos);
+        updateLocalStorage(updatedTodos, TODO_STORAGE_KEY);
     };
 
     const removeTodo = (index) => {
@@ -39,7 +45,19 @@ const Todolist = () => {
         if (confirmation) {
             const updatedTodos = todos.filter((_, i) => i !== index);
             setTodos(updatedTodos);
+            updateLocalStorage(updatedTodos, TODO_STORAGE_KEY);
         }
+    };
+
+    const completeTodo = (index) => {
+        const completedTodo = todos[index];
+        const updatedTodos = todos.filter((_, i) => i !== index);
+        setTodos(updatedTodos);
+        updateLocalStorage(updatedTodos, TODO_STORAGE_KEY);
+
+        const completedTodos = JSON.parse(localStorage.getItem(COMPLETED_STORAGE_KEY) || '[]');
+        completedTodos.push({...completedTodo, completedDate: new Date().toISOString()});
+        updateLocalStorage(completedTodos, COMPLETED_STORAGE_KEY);
     };
 
     const editTodo = (index) => {
@@ -56,6 +74,7 @@ const Todolist = () => {
                 i === editIndex ? { ...todo, text: editText, color: editColor, dueDate: editDate } : todo
             );
             setTodos(updatedTodos);
+            updateLocalStorage(updatedTodos);
             setEditIndex(null);
             setEditText('');
             setEditColor('');
@@ -74,8 +93,6 @@ const Todolist = () => {
         setExpandedIndex((prevIndex) => (prevIndex === index ? null : index));
     };
     
-    console.log(todos);
-    console.log(JSON.stringify(localStorage.getItem(LOCAL_STORAGE_KEY)))
     return (
         <>
         <button 
@@ -106,7 +123,7 @@ const Todolist = () => {
                                         type="text"
                                         value={editText}
                                         onChange={(e) => setEditText(e.target.value)}
-                                        placeholder="Todo text"
+                                        placeholder="To-Do title"
                                         autoFocus
                                     />
                                     <input
@@ -158,6 +175,7 @@ const Todolist = () => {
                                             className="complete-button" 
                                             onClick={(e) => {
                                                 e.stopPropagation();
+                                                completeTodo(index);
                                             }}
                                         >✔</button>
                                         <button 
