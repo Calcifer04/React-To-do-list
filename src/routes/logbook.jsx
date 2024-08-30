@@ -15,26 +15,61 @@ function Logbook() {
         }
     }, []);
 
+    const removeTodo = (indexToRemove) => {
+        const updatedTodos = completedTodo.filter((_, index) => index !== indexToRemove);
+        setCompletedTodo(updatedTodos);
+        localStorage.setItem(COMPLETED_STORAGE_KEY, JSON.stringify(updatedTodos));
+    };
+
     return (
         <>
+        <div className="logbook-container">
         <button 
             className='back-to-list'
             onClick={() => navigate('/')}
             >
             🗒</button>
-        <div className="header">
             <h1 className="logbook-title">Logbook</h1>
+            <div className="table-container">
+                <table className="logbook-table">
+                    <thead>
+                        <tr>
+                            <th>Color</th>
+                            <th>Title</th>
+                            <th>Completed Date</th>
+                            <th>Due Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {completedTodo.map((todo, index) => (
+                            <tr key={index} className="completed-todo-item">
+                                <td>
+                                    <div className="color-circle-container">
+                                        <div 
+                                            className="completed-color-circle" 
+                                            style={{ backgroundColor: todo.color }}
+                                        ></div>
+                                    </div>
+                                </td>
+                                <td className="completed-todo-text">{todo.text}</td>
+                                <td className="completed-todo-date">
+                                    {new Date(todo.completedDate).toISOString().slice(0, 10)}
+                                </td>
+                                <td className="completed-todo-date">{todo.dueDate}</td>
+                                <td><button 
+                                            className="remove-button" 
+                                            onClick={(e) => {
+                                                removeTodo(index);
+                                            }}
+                                        >✖</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <ul>
-            {completedTodo.map((todo, index) => (
-                <li key={index} className="completed-todo-item">
-                    <span className="completed-todo-text">{todo.text}</span>
-                    <span className="completed-todo-date">
-                        Completed: {new Date(todo.completedDate).toLocaleString()}
-                    </span>
-                </li>
-            ))}
-        </ul>
         </>
     );
 }

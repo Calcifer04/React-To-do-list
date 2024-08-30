@@ -190,3 +190,17 @@ p.todo-description {
     z-index: 1000; 
 }
 
+.color-circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.completed-color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
