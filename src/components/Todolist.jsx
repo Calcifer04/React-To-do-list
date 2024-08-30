@@ -159,7 +159,7 @@ const Todolist = () => {
                                     )}
                                     <div className="todo-content">
                                         <span className="todo-text">{todo.text}</span>
-                                        {expandedIndex === index && todo.description && todo.assignmentDate && (
+                                        {expandedIndex === index && todo.assignmentDate && (
                                             <>
                                             <p className="todo-description">{todo.description}</p>
                                             <p className="todo-assigned-date">Assigned: {todo.assignmentDate}</p>
