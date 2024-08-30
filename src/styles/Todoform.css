@@ -7,7 +7,7 @@
     padding: 0.5em;
     font-size: 1.5em;
     border: 1px solid #cccccc00;
-    border-radius: 4px;
+    border-radius: 8px;
     width: 300px;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
@@ -15,16 +15,16 @@
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
-    background-color: rgb(18, 18, 18);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgb(46, 46, 46);
+    box-shadow: rgba(0, 0, 0, 0.719) 0px 5px 15px;
 }
 
 .description-input {
     padding: 0.5em;
     border: 1px solid #cccccc00;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1.1rem;
-    resize: both;
+    resize: vertical;
     overflow: auto;
     margin-top: 20px;
     font-family: "Open Sans", sans-serif;
@@ -33,30 +33,30 @@
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
-    background-color: rgb(18, 18, 18);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgb(46, 46, 46);
+    box-shadow: rgba(0, 0, 0, 0.719) 0px 5px 15px;
 }
 
 .add-button {
     padding: 0.5em 1em;
     font-size: 1em;
-    color: #ffffff;
+    color: #b8b8b8;
     background-color: #242424;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     width:6rem;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
+    font-weight: 400;
+    font-style: bold;
     font-variation-settings:
     "wdth" 100;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.719) 0px 5px 15px;
 }
 
 .add-button:hover {
-    background-color: #636363;
+    background-color: #333333;
 }
 
 h2 {

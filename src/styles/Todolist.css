@@ -36,7 +36,7 @@ li.todo-item {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 25px;
-    width: 50vw;
+    width: 100%;
     position: relative;
 }
 
@@ -44,7 +44,16 @@ p.todo-description {
     margin: 15px 0px 10px 0px;
     color:rgb(161, 161, 161);
     white-space: pre-wrap;
-    font-size: 0.7em;
+    font-size: 0.8em;
+}
+
+.todo-assigned-date {
+    color:rgb(116, 116, 116);
+    font-size: 0.6em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-variation-settings: "wdth" 100;
 }
 
 .todo-actions {
@@ -100,8 +109,27 @@ p.todo-description {
 .edit-container {
     display: flex;
     flex-direction: row;
-    gap: 1vw;
-    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.edit-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.edit-title,
+.edit-description,
+.edit-date {
+    margin-bottom: 10px;
+}
+
+.edit-description {
+    min-height: 60px;
+    resize: vertical;
+    padding: 10px;
 }
 
 .edit-title {
@@ -116,7 +144,7 @@ p.todo-description {
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
-    background-color: rgb(18, 18, 18);
+    background-color: rgb(46, 46, 46);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -134,6 +162,23 @@ p.todo-description {
     border-radius: 4px;
     width: 9rem;
     margin-top: 6px;
+}
+
+.edit-description {
+    height: 50px;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    resize: both;
+    overflow: auto;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+    background-color: rgb(46, 46, 46);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .save-button , .cancel-button {
@@ -154,6 +199,8 @@ p.todo-description {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-left: 10px;
     transition: transform .2s;
+    display: flex;
+    flex-direction: column;
 }
 
 .save-button:hover {
@@ -185,7 +232,7 @@ p.todo-description {
     bottom: 0;
     right: 0;
     width: auto; 
-    height: 500px;
+    height: 70vh;
     margin-right: 20px;
     z-index: 1000; 
 }

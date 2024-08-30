@@ -14,6 +14,7 @@ const Todolist = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
     const [editIndex, setEditIndex] = useState(null);
     const [editText, setEditText] = useState('');
+    const [editDescription, setEditDescription] = useState('')
     const [editColor, setEditColor] = useState('rgb(44, 186, 0)');
     const [editDate, setEditDate] = useState('');
 
@@ -50,20 +51,24 @@ const Todolist = () => {
     };
 
     const completeTodo = (index) => {
-        const completedTodo = todos[index];
-        const updatedTodos = todos.filter((_, i) => i !== index);
-        setTodos(updatedTodos);
-        updateLocalStorage(updatedTodos, TODO_STORAGE_KEY);
+        const confirmation = window.confirm('Are you sure you want to complete & log this item?');
+        if (confirmation) {
+            const completedTodo = todos[index];
+            const updatedTodos = todos.filter((_, i) => i !== index);
+            setTodos(updatedTodos);
+            updateLocalStorage(updatedTodos, TODO_STORAGE_KEY);
 
-        const completedTodos = JSON.parse(localStorage.getItem(COMPLETED_STORAGE_KEY) || '[]');
-        completedTodos.push({...completedTodo, completedDate: new Date().toISOString()});
-        updateLocalStorage(completedTodos, COMPLETED_STORAGE_KEY);
+            const completedTodos = JSON.parse(localStorage.getItem(COMPLETED_STORAGE_KEY) || '[]');
+            completedTodos.push({...completedTodo, completedDate: new Date().toISOString()});
+            updateLocalStorage(completedTodos, COMPLETED_STORAGE_KEY);
+        }
     };
 
     const editTodo = (index) => {
         const todo = todos[index];
         setEditIndex(index);
         setEditText(todo.text);
+        setEditDescription(todo.description);
         setEditColor(todo.color || colorOptions[0]);
         setEditDate(todo.dueDate || '');
     };
@@ -71,12 +76,13 @@ const Todolist = () => {
     const saveEdit = () => {
         if (editIndex !== null) {
             const updatedTodos = todos.map((todo, i) =>
-                i === editIndex ? { ...todo, text: editText, color: editColor, dueDate: editDate } : todo
+                i === editIndex ? { ...todo, text: editText, description: editDescription, color: editColor, dueDate: editDate } : todo
             );
             setTodos(updatedTodos);
             updateLocalStorage(updatedTodos);
             setEditIndex(null);
             setEditText('');
+            setEditDescription('');
             setEditColor('');
             setEditDate('');
         }
@@ -85,6 +91,7 @@ const Todolist = () => {
     const cancelEdit = () => {
         setEditIndex(null);
         setEditText('');
+        setEditDescription('');
         setEditColor('');
         setEditDate('');
     };
@@ -118,20 +125,29 @@ const Todolist = () => {
                                         selectedColor={editColor}
                                         onColorSelect={setEditColor}
                                     />
-                                    <input
-                                        className='edit-title'
-                                        type="text"
-                                        value={editText}
-                                        onChange={(e) => setEditText(e.target.value)}
-                                        placeholder="To-Do title"
-                                        autoFocus
-                                    />
-                                    <input
-                                        className='edit-date'
-                                        type="date"
-                                        value={editDate}
-                                        onChange={(e) => setEditDate(e.target.value)}
-                                    />
+                                    <div className="edit-content">
+                                        <input
+                                            className='edit-title'
+                                            type="text"
+                                            value={editText}
+                                            onChange={(e) => setEditText(e.target.value)}
+                                            placeholder="To-Do title"
+                                            autoFocus
+                                        />
+                                        <textarea
+                                            className='edit-description'
+                                            type="text"
+                                            value={editDescription}
+                                            onChange={(e) => setEditDescription(e.target.value)}
+                                            placeholder="Description/notes">
+                                        </textarea>
+                                        <input
+                                            className='edit-date'
+                                            type="date"
+                                            value={editDate}
+                                            onChange={(e) => setEditDate(e.target.value)}
+                                        />
+                                    </div>
                                 </div>
                             ) : (
                                 <>
@@ -143,15 +159,18 @@ const Todolist = () => {
                                     )}
                                     <div className="todo-content">
                                         <span className="todo-text">{todo.text}</span>
-                                        {expandedIndex === index && todo.description && (
+                                        {expandedIndex === index && todo.description && todo.assignmentDate && (
+                                            <>
                                             <p className="todo-description">{todo.description}</p>
+                                            <p className="todo-assigned-date">Assigned: {todo.assignmentDate}</p>
+                                            </>
                                         )}
                                     </div>
                                 </>
                             )}
                             <div className='todo-actions'>
                                 {editIndex === index ? (
-                                    <>
+                                    <div className='edit-save-cancel'>
                                         <button 
                                             className="save-button" 
                                             onClick={saveEdit}
@@ -160,7 +179,7 @@ const Todolist = () => {
                                             className="cancel-button" 
                                             onClick={cancelEdit}
                                         >Cancel</button>
-                                    </>
+                                    </div>
                                 ) : (
                                     <>  
                                     {todo.dueDate && <span className="todo-date">{todo.dueDate}</span>}

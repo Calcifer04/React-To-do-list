@@ -16,9 +16,10 @@ const Todoform = ({ addTodo }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const dueDate = document.getElementById('duedate').value; // Get the selected date
+        const dueDate = document.getElementById('duedate').value;
+        const assignmentDate = new Date().toISOString().slice(0, 10);
         if (todo.trim()) {
-            addTodo({ text: todo, description, color: selectedColor, dueDate }); // Pass text, description, color, and date
+            addTodo({ text: todo, description, color: selectedColor, dueDate, assignmentDate });
             setTodo('');
             setDescription('');
         }
@@ -38,7 +39,7 @@ const Todoform = ({ addTodo }) => {
                 type="text" 
                 value={todo} 
                 onChange={handleInputChange} 
-                placeholder="Add a new to-do" 
+                placeholder="Title" 
                 className="todo-input"
             />
             <textarea
