@@ -92,7 +92,17 @@ h5{
 }
 
 .form-container {
-    margin-left: 24px;
+    z-index: 50;
+    padding: 20px;
+}
+
+.expanded {
+    position: absolute;
+    background-color: #333333;
+}
+
+.collapsed {
+    position: absolute;
 }
 
 .date-picker {
@@ -156,4 +166,10 @@ h5{
 .color-box.selected {
     border-color: #000000;
     transform: scale(1.2)
+}
+
+.toggle-button {
+    position: absolute;
+    top: 0;
+    left: 0;
 }

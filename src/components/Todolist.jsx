@@ -102,11 +102,12 @@ const Todolist = () => {
     
     return (
         <>
-        <button 
-            className='logbook'
+        <svg 
+            class='logbook'
             onClick={() => navigate('/logbook')}
-            >
-            🕮</button>
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+        </svg>
         <div className="todo-container">
             <Todoform addTodo={addTodo} />
             <div className="todo-list">
@@ -183,27 +184,37 @@ const Todolist = () => {
                                 ) : (
                                     <>  
                                     {todo.dueDate && <span className="todo-date">{todo.dueDate}</span>}
-                                        <button 
-                                            className="edit-button" 
+                                        <svg  
+                                        
+                                            class="edit-button"
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 editTodo(index);
                                             }}
-                                        >✎</button>
-                                        <button 
-                                            className="complete-button" 
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+
+                                        </svg>
+                                        <svg 
+                                        
+                                            class="complete-button" 
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 completeTodo(index);
                                             }}
-                                        >✔</button>
-                                        <button 
-                                            className="remove-button" 
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                        </svg>
+                                        <svg
+                                            
+                                            class="remove-button" 
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 removeTodo(index);
                                             }}
-                                        >✖</button>
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
                                     </>
                                 )}
                             </div>
