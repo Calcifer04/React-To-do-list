@@ -1,21 +1,12 @@
 .todo-container {
     display: flex;
     gap: 60px;
-    padding: 20px;
     width: 100%;
 }
 
 .todo-list {
-    width: 100%;
+    width: 50%;
     margin-top: 10px;
-}
-
-@media (max-width: 1100px) {
-    .todo-list {
-        width: 80%;
-        margin-left: 40px;
-    }
-    
 }
 
 h1 {
@@ -25,6 +16,7 @@ h1 {
     font-style: italic;
     font-variation-settings: "wdth" 100;
     font-size: 50px;
+    margin-left: 10px;
     margin-top: 5px;
 }
 
@@ -35,7 +27,7 @@ ul {
 li.todo-item {
     display: flex;
     align-items: flex-start;
-    gap: 15px;
+    gap: 10px;
     padding: 10px;
     border-bottom: 1px solid #ccc;
     list-style-type: none;
@@ -62,9 +54,23 @@ p.todo-description {
     font-weight: 300;
     font-style: italic;
     font-variation-settings: "wdth" 100;
+    white-space: pre;
+    margin: 0px;
+}
+
+.todo-assigned-label {
+    color:rgb(116, 116, 116);
+    font-size: 0.6em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-variation-settings: "wdth" 100;
+    white-space: pre;
+    margin: 0px;
 }
 
 .todo-actions {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -73,16 +79,18 @@ p.todo-description {
 
 .color-indicator {
     width: 30px;
+    min-width: 30px;
     height: 30px;
     border-radius: 50%;
     border: 1px solid #333;
 }
 
 .todo-date {
-    font-size: 0.9em;
-    color: #555;
+    font-size: 20px;
+    color: #727272;
     min-width: 100px;
     margin-top: 4px;
+    white-space: nowrap;
 }
 
 .todo-text {
@@ -154,8 +162,9 @@ p.todo-description {
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
+    border: 1px solid #cccccc00;
     background-color: rgb(46, 46, 46);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.315) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
 }
 
 .edit-date {
@@ -169,9 +178,11 @@ p.todo-description {
     font-size: 1.2rem;
     background-color: #24242400;
     border: 1px solid #cccccc00;
-    border-radius: 4px;
+    border-radius: 8px;
     width: 9rem;
+    padding: 3px;
     margin-top: 6px;
+    box-shadow: rgba(0, 0, 0, 0.493) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
 }
 
 .edit-description {
@@ -187,8 +198,9 @@ p.todo-description {
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
+    border: 1px solid #cccccc00;
     background-color: rgb(46, 46, 46);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.315) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
 }
 
 .save-button , .cancel-button {
@@ -223,10 +235,10 @@ p.todo-description {
 
 
 .logbook {
-    position: fixed;
+    position: absolute;
     right: 0;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background-color: #33333300;
     border-color: #33333300;
     padding: 10px;
@@ -268,3 +280,60 @@ p.todo-description {
     border: 1px solid #ccc;
 }
 
+@media (max-width: 1100px) {
+    .todo-list {
+        width: 80%;
+        margin-left: 45px;
+        margin-top: 0px
+    }
+}
+
+@media (max-width: 499px) {
+    .todo-list {
+        margin-left: 30px;
+        margin-top: 0px
+    }
+    .todo-text {
+        font-size: 20px;
+        max-width: 100px;
+        font-weight: 370;
+    }
+    .todo-date {
+        font-size: 15px;
+        margin-top: 8px;
+        min-width: 79px;
+    }
+    p.todo-description {
+        font-size: 15px;
+    }
+    h1 {
+        font-size: 40px;
+        margin-left: 20px;
+    }
+    .color-indicator {
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+    }
+    .todo-actions {
+        gap: 2px; 
+    }
+    .edit-title {
+        font-size: 20px;
+        width: auto;
+        width: 180px;
+    }
+    .edit-description {
+        font-size: 15px;
+        width: 180px;
+    }
+    .save-button, .cancel-button {
+        margin-left: 2px;
+        font-size: 15px;
+    }
+    .edit-date {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}

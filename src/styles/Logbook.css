@@ -1,5 +1,4 @@
 .logbook-container {
-    padding: 20px;
     width: 65vw;
     box-sizing: border-box;
 }
@@ -15,6 +14,7 @@
     font-style: italic;
     font-variation-settings: "wdth" 100;
     font-size: 50px;
+    margin-top: 5%;
     margin-left : 18%;
 }
 
@@ -97,4 +97,57 @@
 
 .logbook-table th:last-child {
     border-top-right-radius: 8px;
+}
+
+@media (max-width: 750px) {
+    .logbook-table th {
+        font-size: 15px;
+    }
+    .completed-todo-text {
+        font-size: 20px;
+    }
+    .completed-todo-date {
+        font-size: 15px;
+        white-space: pre;
+    }
+    .logbook-table td {
+        padding: 5px;
+    }
+    .logbook-table {
+        margin-left: 10%;
+    }
+    .logbook-title {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 560px) {
+    .logbook-table {
+        margin-left: 7%;
+    }
+    .logbook-title {
+        margin-left: 12%;
+    }
+}
+
+@media (max-width: 499px) {
+    .logbook-table th {
+        font-size: 10px;
+    }
+    .completed-todo-text {
+        font-size: 15px;
+    }
+    .completed-todo-date {
+        font-size: 10px;
+        white-space: pre;
+    }
+    .logbook-table td {
+        padding: 5px;
+    }
+    .logbook-table {
+        margin-left: 5%;
+    }
+    .logbook-title {
+        font-size: 30px;
+    }
 }

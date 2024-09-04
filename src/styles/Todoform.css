@@ -99,6 +99,8 @@ h5{
 .expanded {
     position: absolute;
     background-color: #333333;
+    border-radius: 8px;
+    box-shadow: rgb(11, 11, 12) 0px 20px 30px -10px;
 }
 
 .collapsed {
@@ -116,8 +118,10 @@ h5{
     font-size: 1.5rem;
     background-color: #24242400;
     border: 1px solid #cccccc00;
-    border-radius: 4px;
+    border-radius: 8px;
     width: 12rem;
+    padding: 4px;
+    box-shadow: rgba(0, 0, 0, 0.315) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -168,8 +172,26 @@ h5{
     transform: scale(1.2)
 }
 
-.toggle-button {
+.expand-button {
     position: absolute;
+    width: 35px;
+    height: 35px;
     top: 0;
     left: 0;
+    padding: 10px;
+    transition: transform .2s;
+}
+
+.collapse-button {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 0;
+    left: 0;
+    transition: transform .2s;
+}
+
+.expand-button:hover, .collapse-button:hover {
+    transform: scale(1.2);
+    color: #ccc;;
 }
