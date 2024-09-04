@@ -3,6 +3,7 @@ import '../styles/Todolist.css';
 import { useNavigate } from 'react-router-dom';
 import Todoform from './Todoform';
 import ColorDropdown from './ColorDropdown';
+import FilterDropdown from './FilterDropdown';
 
 const TODO_STORAGE_KEY = 'todos';
 const COMPLETED_STORAGE_KEY = 'completed_todos';
@@ -100,6 +101,31 @@ const Todolist = () => {
         setExpandedIndex((prevIndex) => (prevIndex === index ? null : index));
     };
     
+    const sortByDueDate = () => {
+        const sortedTodos = [...todos].sort((a, b) => Date.parse(new Date(a.dueDate.split("/").reverse().join("-"))) - Date.parse(new Date(b.dueDate.split("/").reverse().join("-"))));
+        setTodos(sortedTodos);
+        updateLocalStorage(sortedTodos, TODO_STORAGE_KEY);
+    };
+
+    const sortByAssignmentDate = () => {
+        const sortedTodos = [...todos].sort((a, b) => Date.parse(new Date(a.assignmentDate.split("/").reverse().join("-"))) - Date.parse(new Date(b.assignmentDate.split("/").reverse().join("-"))));
+        setTodos(sortedTodos);
+        updateLocalStorage(sortedTodos, TODO_STORAGE_KEY);
+    };
+
+    const colorOrder = ['rgb(255, 0, 0)', 'rgb(255, 167, 0)', 'rgb(44, 186, 0)'];
+
+    const sortByColor = () => {
+        const sortedTodos = [...todos].sort((a, b) => {
+            console.log("Colors being compared:", a.color, b.color);
+            const colorA = colorOrder.indexOf(a.color);
+            const colorB = colorOrder.indexOf(b.color);
+            return colorA - colorB;
+        });
+        setTodos(sortedTodos);
+        updateLocalStorage(sortedTodos, TODO_STORAGE_KEY);
+    };
+
     return (
         <>
         <svg 
@@ -110,6 +136,9 @@ const Todolist = () => {
         </svg>
         <div className="todo-container">
             <Todoform addTodo={addTodo} />
+            <div className="sorting-buttons">
+                <FilterDropdown/>
+            </div>
             <div className="todo-list">
                 <h1>To-Do List:</h1>
                 <ul>
