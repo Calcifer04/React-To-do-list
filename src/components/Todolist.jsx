@@ -3,7 +3,6 @@ import '../styles/Todolist.css';
 import { useNavigate } from 'react-router-dom';
 import Todoform from './Todoform';
 import ColorDropdown from './ColorDropdown';
-import FilterDropdown from './FilterDropdown';
 
 const TODO_STORAGE_KEY = 'todos';
 const COMPLETED_STORAGE_KEY = 'completed_todos';
@@ -100,7 +99,7 @@ const Todolist = () => {
     const toggleDescription = (index) => {
         setExpandedIndex((prevIndex) => (prevIndex === index ? null : index));
     };
-    
+
     const sortByDueDate = () => {
         const sortedTodos = [...todos].sort((a, b) => Date.parse(new Date(a.dueDate.split("/").reverse().join("-"))) - Date.parse(new Date(b.dueDate.split("/").reverse().join("-"))));
         setTodos(sortedTodos);
@@ -117,7 +116,6 @@ const Todolist = () => {
 
     const sortByColor = () => {
         const sortedTodos = [...todos].sort((a, b) => {
-            console.log("Colors being compared:", a.color, b.color);
             const colorA = colorOrder.indexOf(a.color);
             const colorB = colorOrder.indexOf(b.color);
             return colorA - colorB;
@@ -136,8 +134,18 @@ const Todolist = () => {
         </svg>
         <div className="todo-container">
             <Todoform addTodo={addTodo} />
-            <div className="sorting-buttons">
-                <FilterDropdown/>
+            <div className="dropdown">
+                <button class="dropbtn">
+                    <span className="filter">Filter</span>
+                    <svg class="funnel" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                    </svg>
+                    </button>
+                <div class="dropdown-content">
+                    <a onClick={sortByDueDate}>Due Date</a>
+                    <a onClick={sortByAssignmentDate}>Assignment Date</a>
+                    <a onClick={sortByColor}>Color</a>
+                </div>
             </div>
             <div className="todo-list">
                 <h1>To-Do List:</h1>
