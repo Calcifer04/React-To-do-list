@@ -101,13 +101,45 @@ const Todolist = () => {
     };
 
     const sortByDueDate = () => {
-        const sortedTodos = [...todos].sort((a, b) => Date.parse(new Date(a.dueDate.split("/").reverse().join("-"))) - Date.parse(new Date(b.dueDate.split("/").reverse().join("-"))));
+        let isAscending = true;
+
+        for (let i = 1; i < todos.length; i++) {
+            const prevDate = Date.parse(new Date(todos[i-1].dueDate.split("/").reverse().join("-")));
+            const currDate = Date.parse(new Date(todos[i].dueDate.split("/").reverse().join("-")));
+            if (prevDate > currDate) {
+                isAscending = false;
+                break;
+            }
+        }
+    
+        const sortedTodos = [...todos].sort((a, b) => {
+            const aDate = Date.parse(new Date(a.dueDate.split("/").reverse().join("-")));
+            const bDate = Date.parse(new Date(b.dueDate.split("/").reverse().join("-")));
+            return isAscending ? bDate - aDate : aDate - bDate;
+        });
+    
         setTodos(sortedTodos);
         updateLocalStorage(sortedTodos, TODO_STORAGE_KEY);
     };
 
     const sortByAssignmentDate = () => {
-        const sortedTodos = [...todos].sort((a, b) => Date.parse(new Date(a.assignmentDate.split("/").reverse().join("-"))) - Date.parse(new Date(b.assignmentDate.split("/").reverse().join("-"))));
+        let isAscending = true;
+
+        for (let i = 1; i < todos.length; i++) {
+            const prevDate = Date.parse(new Date(todos[i-1].assignmentDate.split("/").reverse().join("-")));
+            const currDate = Date.parse(new Date(todos[i].assignmentDate.split("/").reverse().join("-")));
+            if (prevDate > currDate) {
+                isAscending = false;
+                break;
+            }
+        }
+    
+        const sortedTodos = [...todos].sort((a, b) => {
+            const aDate = Date.parse(new Date(a.assignmentDate.split("/").reverse().join("-")));
+            const bDate = Date.parse(new Date(b.assignmentDate.split("/").reverse().join("-")));
+            return isAscending ? bDate - aDate : aDate - bDate;
+        });
+    
         setTodos(sortedTodos);
         updateLocalStorage(sortedTodos, TODO_STORAGE_KEY);
     };
@@ -115,11 +147,23 @@ const Todolist = () => {
     const colorOrder = ['rgb(255, 0, 0)', 'rgb(255, 167, 0)', 'rgb(44, 186, 0)'];
 
     const sortByColor = () => {
+        let isAscending = true;
+    
+        for (let i = 1; i < todos.length; i++) {
+            const prevColor = colorOrder.indexOf(todos[i-1].color);
+            const currColor = colorOrder.indexOf(todos[i].color);
+            if (prevColor > currColor) {
+                isAscending = false;
+                break;
+            }
+        }
+    
         const sortedTodos = [...todos].sort((a, b) => {
             const colorA = colorOrder.indexOf(a.color);
             const colorB = colorOrder.indexOf(b.color);
-            return colorA - colorB;
+            return isAscending ? colorB - colorA : colorA - colorB;
         });
+    
         setTodos(sortedTodos);
         updateLocalStorage(sortedTodos, TODO_STORAGE_KEY);
     };
