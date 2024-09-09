@@ -30,10 +30,11 @@
     cursor: pointer;
 }
 
-.funnel {
+.sort-icon {
     width: 20px;
     height: 20px;
     margin-left: 5px;
+    margin-top: 1px;
     
 }
 
@@ -71,7 +72,7 @@ h1 {
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
-    font-style: italic;
+    font-style: normal;
     font-variation-settings: "wdth" 100;
     font-size: 50px;
     margin-left: 10px;
@@ -101,6 +102,7 @@ li.todo-item {
 p.todo-description {
     margin: 15px 0px 10px 0px;
     color:rgb(161, 161, 161);
+    max-width: 100%;
     white-space: pre-wrap;
     font-size: 0.8em;
 }
@@ -128,11 +130,17 @@ p.todo-description {
 }
 
 .todo-actions {
-    position: relative;
+    position: absolute;
+    right: 0px;
     display: flex;
     flex-direction: row;
     gap: 5px;
     margin-left: auto;
+}
+
+.edit-save-cancel {
+    position: relative;
+    margin-top: 125px;
 }
 
 .color-indicator {
@@ -202,27 +210,21 @@ p.todo-description {
     margin-bottom: 10px;
 }
 
-.edit-description {
-    min-height: 60px;
-    resize: vertical;
-    padding: 10px;
-}
 
 .edit-title {
     padding: 0.5em;
     font-size: 0.8em;
     border: 1px solid #cccccc00;
     border-radius: 4px;
-    width: auto;
+
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
     font-variation-settings:
     "wdth" 100;
-    border: 1px solid #cccccc00;
     background-color: rgb(46, 46, 46);
-    box-shadow: rgba(0, 0, 0, 0.315) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.694) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
 }
 
 .edit-date {
@@ -240,7 +242,7 @@ p.todo-description {
     width: 9rem;
     padding: 3px;
     margin-top: 6px;
-    box-shadow: rgba(0, 0, 0, 0.493) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.694) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
 }
 
 .edit-description {
@@ -248,7 +250,7 @@ p.todo-description {
     border: 1px solid #cccccc00;
     border-radius: 4px;
     font-size: 1.1rem;
-    resize: both;
+    resize: vertical;
     overflow: auto;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
@@ -258,12 +260,13 @@ p.todo-description {
     "wdth" 100;
     border: 1px solid #cccccc00;
     background-color: rgb(46, 46, 46);
-    box-shadow: rgba(0, 0, 0, 0.315) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.936) 0px 2px 4px 0px, rgba(4, 8, 10, 0.432) 0px 2px 16px 0px;
 }
 
 .save-button , .cancel-button {
-    margin-top: 13px;
-    font-size: 0.7em;
+    position: relative;
+    margin-top: 30px;
+    font-size: 0.8em;
     color: #ffffff;
     background-color: #242424;
     border: none;
@@ -277,10 +280,9 @@ p.todo-description {
     font-variation-settings:
     "wdth" 100;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin-left: 10px;
     transition: transform .2s;
-    display: flex;
-    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 5px;
 }
 
 .save-button:hover {
@@ -295,11 +297,11 @@ p.todo-description {
 .logbook {
     position: absolute;
     right: 0;
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     background-color: #33333300;
     border-color: #33333300;
-    padding: 10px;
+    padding: 15px;
     transition: transform .2s;
 }
 
@@ -344,6 +346,11 @@ p.todo-description {
         margin-left: 45px;
         margin-top: 0px
     }
+    h1 {
+        margin-top: 10px;
+        font-size: 35px;
+        margin-left: 22px;
+    }
 }
 
 @media (max-width: 499px) {
@@ -365,11 +372,13 @@ p.todo-description {
         font-size: 15px;
     }
     h1 {
-        font-size: 40px;
-        margin-left: 20px;
+        margin-top: 13px;
+        font-size: 30px;
+        margin-left: 25px;
     }
     .color-indicator {
         width: 20px;
+        margin-top:  4px;
         min-width: 20px;
         height: 20px;
     }
@@ -379,14 +388,18 @@ p.todo-description {
     .edit-title {
         font-size: 20px;
         width: auto;
-        width: 180px;
     }
     .edit-description {
         font-size: 15px;
-        width: 180px;
+    }
+
+    .edit-save-cancel {
+        display: flex;
+        flex-direction: column;
+        margin-top: 115px;
     }
     .save-button, .cancel-button {
-        margin-left: 2px;
+        margin-top: 8px;
         font-size: 15px;
     }
     .edit-date {
@@ -402,7 +415,7 @@ p.todo-description {
         font-size: 12px;
         padding: 5px;
     }
-    .funnel {
+    .sort-icon {
         width: 12px;
         height: 12px;
     }

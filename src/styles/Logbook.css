@@ -149,5 +149,7 @@
     }
     .logbook-title {
         font-size: 30px;
+        margin-left: 43px;
+        margin-top: 15px;
     }
 }
